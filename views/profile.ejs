@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+</head>
+    <body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+        
+        <div class="col-4">
+            <h3>Create new room</h3>
+
+            <form action="/createRoom" method="post">
+        
+                <div class="form-group">
+                    <label>Room Name</label>
+                    <input type="text" class="form-control" name="roomName">
+                </div>
+        
+                <button type="submit" class="btn btn-warning btn-lg">Create</button>
+            </form>
+
+        </div>
+    </div>
+
+    <h2>Table start</h2>
+    <table>
+        <% for(var i=0; i < rooms.length; i++) { %>
+          
+            <div class="list-group list-group-horizontal">
+                <div class="row">
+                    <div class="col-1">
+                        <span><%= i + 1 %></span>
+                    </div>
+                    <div class="col">
+                            <a href="/showRoom/<%= rooms[i]._id %>" 
+                            class="list-group-item list-group-item-action"><strong>
+                             <%= rooms[i].name %>
+                            </strong>
+                            
+                         </a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </table>
+
+ </div>
+</body>
+</html>
